@@ -7,7 +7,7 @@ import {CategoryItem} from './components';
 
 export const CategoriesScreen = props => {
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <Header title={'Meal Categories'} />
       <FlatList
         keyExtractor={(item, index) => item.id}
@@ -16,7 +16,11 @@ export const CategoriesScreen = props => {
         renderItem={({item}) => (
           <CategoryItem
             data={item}
-            onPress={() => props.navigation.navigate(SCREEN.CATEGORY_MEALS)}
+            onPress={() =>
+              props.navigation.navigate(SCREEN.CATEGORY_MEALS, {
+                categoryMeal: item,
+              })
+            }
           />
         )}
       />
@@ -24,10 +28,4 @@ export const CategoriesScreen = props => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+const styles = StyleSheet.create({});

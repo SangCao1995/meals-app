@@ -1,11 +1,31 @@
 import React from 'react';
-import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  View,
+  TouchableNativeFeedback,
+  Platform,
+} from 'react-native';
 
 export const CategoryItem = ({data, onPress}) => {
+  let ButtonComponent = TouchableOpacity;
+  if (Platform.OS === 'android' && Platform.Version >= 21) {
+    ButtonComponent = TouchableNativeFeedback;
+  }
+
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Text>{data.title}</Text>
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <ButtonComponent onPress={onPress}>
+        <View style={[styles.categoryWrapper, {backgroundColor: data.color}]}>
+          <Text
+            numberOfLines={2}
+            style={{fontFamily: 'OpenSans-Bold', fontSize: 21}}>
+            {data.title}
+          </Text>
+        </View>
+      </ButtonComponent>
+    </View>
   );
 };
 
@@ -14,5 +34,19 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 15,
     height: 150,
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  categoryWrapper: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    borderRadius: 10,
+    shadowColor: 'black',
+    shadowOpacity: 0.26,
+    shadowOffset: {width: 0, height: 2},
+    shadowRadius: 10,
+    elevation: 3,
+    padding: 15,
   },
 });
