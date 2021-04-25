@@ -3,21 +3,29 @@ import {View, Text, StyleSheet, Platform} from 'react-native';
 import {Colors} from '../themes';
 import Icon from '../images/icons';
 
-export const Header = ({title, backButton, onPress}) => {
+export const Header = ({title, onBackClick, onfavoriteClick}) => {
   return (
     <View style={styles.header}>
-      {backButton ? (
+      {onBackClick ? (
         <Icon.MaterialIcons
           name={'arrow-back-ios'}
           size={24}
           color={Platform.OS === 'android' ? 'white' : Colors.primary}
-          onPress={onPress}
+          onPress={onBackClick}
         />
       ) : (
-        <View />
+        <View style={{width: 24}} />
       )}
       <Text style={styles.title}>{title}</Text>
-      {backButton ? <View style={{width: 24}} /> : <View />}
+      {onfavoriteClick ? (
+        <Icon.Ionicons
+          name={'ios-star'}
+          size={24}
+          color={Platform.OS === 'android' ? 'white' : Colors.primary}
+        />
+      ) : (
+        <View style={{width: 24}} />
+      )}
     </View>
   );
 };

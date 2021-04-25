@@ -7,9 +7,9 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export const MealItem = ({data}) => {
+export const MealItem = ({data, onPress}) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={{height: '85%'}}>
         <ImageBackground source={{uri: data.imageUrl}} style={styles.image}>
           <View style={styles.titleContainer}>
