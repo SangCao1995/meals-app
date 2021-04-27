@@ -5,7 +5,7 @@ import {mealsData} from '../../constants/common';
 import {MealItem} from './components';
 import {SCREEN} from '../../routes/Screen';
 
-export const CategoryMeals = props => {
+export const CategoryMealsScreen = props => {
   const categoryMeal = props.route.params.categoryMeal;
 
   const displayMeals = mealsData.filter(
