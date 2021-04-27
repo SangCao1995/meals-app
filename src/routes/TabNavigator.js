@@ -1,15 +1,15 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {SCREEN} from './Screen';
 import {CategoriesScreen, FavoritesScreen} from '../screens';
 import {Colors} from '../themes';
 import Icon from '../images/icons';
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const screenOptions = ({route}) => ({
   tabBarIcon: ({focused}) => {
-    let focusedIcon = focused ? Colors.accent : 'gray';
+    let focusedIcon = focused ? 'white' : 'gray';
 
     if (route.name === SCREEN.CATEGORIES) {
       return (
@@ -21,26 +21,23 @@ const screenOptions = ({route}) => ({
   },
 });
 
-const tabBarOptions = {
-  activeTintColor: Colors.accent,
-};
-
 export const TabNavigator = props => {
   return (
     <Tab.Navigator
       {...props}
       initialRouteName={SCREEN.CATEGORIES}
-      tabBarOptions={tabBarOptions}
-      screenOptions={screenOptions}>
+      screenOptions={screenOptions}
+      activeColor={'white'}
+      shifting={true}>
       <Tab.Screen
         name={SCREEN.CATEGORIES}
         component={CategoriesScreen}
-        options={{title: 'Meals'}}
+        options={{title: 'Meals', tabBarColor: Colors.primary}}
       />
       <Tab.Screen
         name={SCREEN.FAVORITES}
         component={FavoritesScreen}
-        options={{title: 'Favorites'}}
+        options={{title: 'Favorites', tabBarColor: Colors.accent}}
       />
     </Tab.Navigator>
   );
