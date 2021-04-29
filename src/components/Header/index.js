@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    fontWeight: 'bold',
+    fontFamily: 'OpenSans-Bold',
     color: Platform.OS === 'android' ? 'white' : Colors.primary,
     fontSize: 20,
   },
