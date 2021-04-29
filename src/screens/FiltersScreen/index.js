@@ -2,11 +2,11 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Header} from '../../components';
 
-export const FilterScreen = props => {
+export const FiltersScreen = props => {
   return (
     <View style={{flex: 1}}>
       <Header
-        title={'Filter'}
+        title={'Filters'}
         onMenuCLick={() => props.navigation.toggleDrawer()}
       />
     </View>
