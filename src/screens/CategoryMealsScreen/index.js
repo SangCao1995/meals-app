@@ -1,9 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
-import {Header} from '../../components';
+import {Header, MealList} from '../../components';
 import {mealsData} from '../../constants/common';
-import {MealItem} from './components';
-import {SCREEN} from '../../routes/Screen';
 
 export const CategoryMealsScreen = props => {
   const categoryMeal = props.route.params.categoryMeal;
@@ -17,19 +15,7 @@ export const CategoryMealsScreen = props => {
         title={categoryMeal.title}
         onBackClick={() => props.navigation.goBack()}
       />
-      <FlatList
-        contentContainerStyle={{padding: 10}}
-        keyExtractor={(item, index) => item.id}
-        data={displayMeals}
-        renderItem={({item}) => (
-          <MealItem
-            data={item}
-            onPress={() =>
-              props.navigation.navigate(SCREEN.MEAL_DETAIL, {mealDetail: item})
-            }
-          />
-        )}
-      />
+      <MealList data={displayMeals} navigation={props.navigation} />
     </View>
   );
 };

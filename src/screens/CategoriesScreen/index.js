@@ -8,7 +8,10 @@ import {CategoryItem} from './components';
 export const CategoriesScreen = props => {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
-      <Header title={'Meal Categories'} />
+      <Header
+        title={'Meal Categories'}
+        onMenuCLick={() => props.navigation.toggleDrawer()}
+      />
       <FlatList
         keyExtractor={(item, index) => item.id}
         numColumns={2}

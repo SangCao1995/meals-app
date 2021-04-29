@@ -1,20 +1,26 @@
 import React from 'react';
 import {View, Text, StyleSheet, Platform} from 'react-native';
-import {Colors} from '../themes';
-import Icon from '../images/icons';
+import {Colors} from '../../themes';
+import Icon from '../../images/icons';
 
-export const Header = ({title, onBackClick, onfavoriteClick}) => {
+export const Header = ({title, onBackClick, onfavoriteClick, onMenuCLick}) => {
   return (
     <View style={styles.header}>
-      {onBackClick ? (
+      {onMenuCLick && (
+        <Icon.Ionicons
+          name={'menu'}
+          size={24}
+          color={Platform.OS === 'android' ? 'white' : Colors.primary}
+          onPress={onMenuCLick}
+        />
+      )}
+      {onBackClick && (
         <Icon.MaterialIcons
           name={'arrow-back-ios'}
           size={24}
           color={Platform.OS === 'android' ? 'white' : Colors.primary}
           onPress={onBackClick}
         />
-      ) : (
-        <View style={{width: 24}} />
       )}
       <Text style={styles.title}>{title}</Text>
       {onfavoriteClick ? (
