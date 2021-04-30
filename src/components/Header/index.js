@@ -36,6 +36,7 @@ export const Header = ({
           name={'ios-star'}
           size={24}
           color={Platform.OS === 'android' ? 'white' : Colors.primary}
+          onPress={onfavoriteClick}
         />
       )}
       {onSaveClick && (

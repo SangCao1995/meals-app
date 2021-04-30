@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux';
 
 export const FavoritesScreen = props => {
   const favoriteMeals = useSelector(state => state.meals.favoriteMeals);
+  console.log(favoriteMeals);
   return (
     <View style={{flex: 1}}>
       <Header

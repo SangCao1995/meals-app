@@ -1,17 +1,24 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
 import {Header} from '../../components';
 import {ListItem} from './components';
+import {useDispatch} from 'react-redux';
+import {mealsAction} from '../../store/actions';
 
 export const MealDetailScreen = props => {
   const mealDetail = props.route.params.mealDetail;
+  const dispatch = useDispatch();
+  const toggleFavoriteHandle = useCallback(() => {
+    console.log('fav');
+    dispatch(mealsAction.toggleFavoriteMeal(mealDetail));
+  }, [dispatch, mealDetail]);
   return (
     <View style={{flex: 1}}>
       <Header
         isHeaderRight
         title={mealDetail.title}
         onBackClick={() => props.navigation.goBack()}
-        onfavoriteClick
+        onfavoriteClick={() => toggleFavoriteHandle()}
       />
       <ScrollView>
         <Image
@@ -25,11 +32,11 @@ export const MealDetailScreen = props => {
         </View>
         <Text style={styles.title}>Ingredient</Text>
         {mealDetail.ingredients.map(ingredient => (
-          <ListItem>{ingredient}</ListItem>
+          <ListItem key={ingredient}>{ingredient}</ListItem>
         ))}
         <Text style={styles.title}>Step</Text>
         {mealDetail.steps.map(step => (
-          <ListItem>{step}</ListItem>
+          <ListItem key={step}>{step}</ListItem>
         ))}
       </ScrollView>
     </View>

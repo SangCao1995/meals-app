@@ -11,6 +11,7 @@ export const MealList = ({data, navigation}) => {
       data={data}
       renderItem={({item}) => (
         <MealItem
+          key={item.id}
           data={item}
           onPress={() =>
             navigation.navigate(SCREEN.MEAL_DETAIL, {mealDetail: item})
