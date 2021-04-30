@@ -8,6 +8,7 @@ export const MealDetailScreen = props => {
   return (
     <View style={{flex: 1}}>
       <Header
+        isHeaderRight
         title={mealDetail.title}
         onBackClick={() => props.navigation.goBack()}
         onfavoriteClick

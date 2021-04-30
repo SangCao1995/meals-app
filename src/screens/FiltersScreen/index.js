@@ -22,6 +22,7 @@ export const FiltersScreen = props => {
   return (
     <View style={{flex: 1}}>
       <Header
+        isHeaderRight
         title={'Filters'}
         onMenuCLick={() => props.navigation.toggleDrawer()}
         onSaveClick={() => {

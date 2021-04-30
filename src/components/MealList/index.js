@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {MealItem} from '../../screens/CategoryMealsScreen/components';
+import {MealItem} from '../';
 import {SCREEN} from '../../routes/Screen';
 
 export const MealList = ({data, navigation}) => {

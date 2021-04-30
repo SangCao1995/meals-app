@@ -9,6 +9,7 @@ export const Header = ({
   onfavoriteClick,
   onMenuCLick,
   onSaveClick,
+  isHeaderRight,
 }) => {
   return (
     <View style={styles.header}>
@@ -29,24 +30,21 @@ export const Header = ({
         />
       )}
       <Text style={styles.title}>{title}</Text>
-      {onfavoriteClick ? (
+      {!isHeaderRight && <View style={{width: 24}} />}
+      {onfavoriteClick && (
         <Icon.Ionicons
           name={'ios-star'}
           size={24}
           color={Platform.OS === 'android' ? 'white' : Colors.primary}
         />
-      ) : (
-        <View style={{width: 24}} />
       )}
-      {onSaveClick ? (
+      {onSaveClick && (
         <Icon.Ionicons
           name={'ios-save'}
           size={24}
           color={Platform.OS === 'android' ? 'white' : Colors.primary}
           onPress={onSaveClick}
         />
-      ) : (
-        <View style={{width: 24}} />
       )}
     </View>
   );
