@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Header} from '../../components';
 import {FilterSwitch} from './components';
@@ -8,11 +8,25 @@ export const FiltersScreen = props => {
   const [isLactoseFree, setLactoseFree] = useState(false);
   const [isVegan, setVegan] = useState(false);
   const [isVegetarian, setVegetarian] = useState(false);
+
+  const saveFilter = useCallback(() => {
+    const appliedFilters = {
+      glutenFree: isGlutenFree,
+      lactoseFree: isLactoseFree,
+      vegan: isVegan,
+      vegetarian: isVegetarian,
+    };
+    console.log(appliedFilters);
+  }, [isVegetarian, isGlutenFree, isVegan, isLactoseFree]);
+
   return (
     <View style={{flex: 1}}>
       <Header
         title={'Filters'}
         onMenuCLick={() => props.navigation.toggleDrawer()}
+        onSaveClick={() => {
+          saveFilter();
+        }}
       />
       <View style={styles.container}>
         <Text style={styles.title}>Available Filters / Restrictions</Text>

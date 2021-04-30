@@ -3,7 +3,13 @@ import {View, Text, StyleSheet, Platform} from 'react-native';
 import {Colors} from '../../themes';
 import Icon from '../../images/icons';
 
-export const Header = ({title, onBackClick, onfavoriteClick, onMenuCLick}) => {
+export const Header = ({
+  title,
+  onBackClick,
+  onfavoriteClick,
+  onMenuCLick,
+  onSaveClick,
+}) => {
   return (
     <View style={styles.header}>
       {onMenuCLick && (
@@ -28,6 +34,16 @@ export const Header = ({title, onBackClick, onfavoriteClick, onMenuCLick}) => {
           name={'ios-star'}
           size={24}
           color={Platform.OS === 'android' ? 'white' : Colors.primary}
+        />
+      ) : (
+        <View style={{width: 24}} />
+      )}
+      {onSaveClick ? (
+        <Icon.Ionicons
+          name={'ios-save'}
+          size={24}
+          color={Platform.OS === 'android' ? 'white' : Colors.primary}
+          onPress={onSaveClick}
         />
       ) : (
         <View style={{width: 24}} />
