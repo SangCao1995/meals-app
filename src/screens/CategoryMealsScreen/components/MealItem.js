@@ -19,7 +19,7 @@ export const MealItem = ({data, onPress}) => {
       </View>
 
       <View style={styles.mealDetail}>
-        <Text>{data.duration}</Text>
+        <Text>{data.duration}m</Text>
         <Text>{data.complexity.toUpperCase()}</Text>
         <Text>{data.affordability.toUpperCase()}</Text>
       </View>
