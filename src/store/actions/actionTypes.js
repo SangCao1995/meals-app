@@ -1,3 +1,4 @@
 export const mealsType = {
   TOGGLE_FAVORITE_MEAL: 'TOGGLE_FAVORITE_MEAL',
+  SET_FILTERS: 'SET_FILTERS',
 };

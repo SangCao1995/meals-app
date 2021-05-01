@@ -2,12 +2,15 @@ import React, {useState, useCallback} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Header} from '../../components';
 import {FilterSwitch} from './components';
+import {mealsAction} from '../../store/actions';
+import {useDispatch} from 'react-redux';
 
 export const FiltersScreen = props => {
   const [isGlutenFree, setGlutenFree] = useState(false);
   const [isLactoseFree, setLactoseFree] = useState(false);
   const [isVegan, setVegan] = useState(false);
   const [isVegetarian, setVegetarian] = useState(false);
+  const dispatch = useDispatch();
 
   const saveFilter = useCallback(() => {
     const appliedFilters = {
@@ -16,8 +19,9 @@ export const FiltersScreen = props => {
       vegan: isVegan,
       vegetarian: isVegetarian,
     };
-    console.log(appliedFilters);
-  }, [isVegetarian, isGlutenFree, isVegan, isLactoseFree]);
+
+    dispatch(mealsAction.setFilters(appliedFilters));
+  }, [isVegetarian, isGlutenFree, isVegan, isLactoseFree, dispatch]);
 
   return (
     <View style={{flex: 1}}>
