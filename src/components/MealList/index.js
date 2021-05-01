@@ -1,7 +1,7 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {MealItem} from '../';
 import {SCREEN} from '../../routes/Screen';
+import {MealItem} from '../';
 
 export const MealList = ({data, navigation}) => {
   return (
@@ -13,9 +13,11 @@ export const MealList = ({data, navigation}) => {
         <MealItem
           key={item.id}
           data={item}
-          onPress={() =>
-            navigation.navigate(SCREEN.MEAL_DETAIL, {mealDetail: item})
-          }
+          onPress={() => {
+            navigation.navigate(SCREEN.MEAL_DETAIL, {
+              mealDetail: item,
+            });
+          }}
         />
       )}
     />

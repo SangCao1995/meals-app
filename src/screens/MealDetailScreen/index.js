@@ -4,14 +4,20 @@ import {Header} from '../../components';
 import {ListItem} from './components';
 import {useDispatch} from 'react-redux';
 import {mealsAction} from '../../store/actions';
+import {useSelector} from 'react-redux';
 
 export const MealDetailScreen = props => {
   const mealDetail = props.route.params.mealDetail;
+  const currentMealIsFavorite = useSelector(state =>
+    state.meals.favoriteMeals.some(
+      favoriteMeal => favoriteMeal.id === mealDetail.id,
+    ),
+  );
   const dispatch = useDispatch();
   const toggleFavoriteHandle = useCallback(() => {
-    console.log('fav');
     dispatch(mealsAction.toggleFavoriteMeal(mealDetail));
   }, [dispatch, mealDetail]);
+
   return (
     <View style={{flex: 1}}>
       <Header
@@ -19,6 +25,7 @@ export const MealDetailScreen = props => {
         title={mealDetail.title}
         onBackClick={() => props.navigation.goBack()}
         onfavoriteClick={() => toggleFavoriteHandle()}
+        isFavoriteMeal={currentMealIsFavorite}
       />
       <ScrollView>
         <Image
