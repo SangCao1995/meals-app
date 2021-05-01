@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import {Header, MealList} from '../../components';
-import {mealsData} from '../../constants/common';
 import {useSelector} from 'react-redux';
 
 export const CategoryMealsScreen = props => {

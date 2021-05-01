@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 import {Header} from '../../components';
 import {categoryItemData} from '../../constants';
 import {SCREEN} from '../../routes/Screen';
